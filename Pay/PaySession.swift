@@ -162,6 +162,12 @@ public class PaySession: NSObject {
 //  MARK: - PKPaymentAuthorizationControllerDelegate -
 //
 extension PaySession: PKPaymentAuthorizationControllerDelegate {
+    
+    @available(iOS 11.0, *)
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        let result = PKPaymentAuthorizationResult(status: .failure, errors: [])
+        completion(result)
+    }
 
     // -------------------------------------------------------
     //  MARK: - PKPaymentAuthorizationControllerDelegate -
